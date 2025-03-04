@@ -1,0 +1,27 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/colors" as *;
+@use "../base/reset" as *;
+
+header {
+    position: absolute;
+    width: 100%;
+    padding: $place;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+  
+    .overlay {
+        padding-right: $spacing;
+        a {
+            @include link-style($text-light);
+            padding: 0.5rem 1rem;
+            border: 1px solid #C0C0C0;
+            background-color: $overlay-bg;
+            &:hover {
+                background: $text-light;
+                color: $background-dark;
+            }
+        }
+    }
+}

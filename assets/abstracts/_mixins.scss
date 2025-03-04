@@ -1,0 +1,86 @@
+@use 'variables' as *;
+@use 'colors' as *;
+
+    @mixin button-style($bg-color, $hover-color) {
+        color: $text-light;
+        background: $bg-color;
+        border: none;
+        padding: 1rem 0;
+        border-radius: $border-radius;
+        cursor: pointer;
+        width: 300px;   
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+  
+    @mixin link-style($color) {
+        color: $color;
+        text-decoration: none;
+        letter-spacing: $letter-spacing;
+        text-transform: uppercase;
+        &:hover {
+            transform: scale(1.05)
+        }
+    }
+  
+    @mixin flex-center($flex-direction, $justify-content, $align-items, $gap) {
+        display: flex;
+        flex-direction: $flex-direction;
+        justify-content: $justify-content;
+        align-items: $align-items;
+        gap: $gap;
+    }
+
+    @mixin flex-column($flex-direction, $justify-content, $align-items, $gap) {
+        display: flex;
+        flex-direction: $flex-direction;
+        justify-content: $justify-content;
+        align-items: $align-items;
+        gap: $gap;
+    }
+
+    @mixin button-home($justify-content, $align-items,) {
+        display: flex;
+        all: unset;
+        color: $text-light;
+        margin-bottom: $margin-b;
+    }
+
+    @mixin list-style($flex-direction, $gap) {        
+        flex-direction: $flex-direction;
+        gap: $gap;
+        list-style: none;
+        display: flex;
+    }
+
+    @mixin grid ($gap) {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: $gap
+    }
+
+    @mixin img {
+    width: 100%;
+    height: auto;
+        &:hover {
+        transform: scale(1.05)  
+        }
+    }
+
+    @mixin toggle-btn-back($padding, $gap) {        
+        padding: $padding;
+        gap: $gap;
+        display: flex;
+        background: $button-back-color;
+        border-radius: 50px;
+        width: 100%;
+    }
+
+    @mixin price-style($color, $font-size) {
+        color: $color;
+        font-size: $font-size;
+    }

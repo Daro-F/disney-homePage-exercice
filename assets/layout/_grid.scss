@@ -1,0 +1,99 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+@use "../base/reset" as *;
+@use "../base/typographys" as *;
+
+// Grille principale (desktop)
+.trending-grid {
+    @include grid(2rem);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    img {
+        @include img;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    // Masquer sur mobile
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+// Version mobile
+.trending-wrapper-mobile {
+    @include flex-column(column, center, stretch, 0);
+    width: 100%;
+
+    .mobile-slider {
+        @include flex-center(row, space-between, center, 0);
+        width: 100%;
+        max-width: 100%;
+        
+        button {
+            all: unset;
+            cursor: pointer;
+        }
+    }
+
+    .mobile-top-grid {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .trending-item {
+            width: 100%;
+
+            .image-card {
+                @include flex-center(row, center, center, 0);
+                width: 100%;
+            }
+
+            img {
+                width: 90%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+// Grille des images en dessous
+
+.mobile-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 0;
+
+    .trending-item {
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// Responsive 
+
+@media (max-width: 768px) {
+    .mobile-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mobile-slider {
+        max-width: 90%;
+    }
+}
+
+// Cacher la version mobile sur desktop
+@media (min-width: 768px) {
+    .trending-wrapper-mobile {
+        display: none;
+    }
+}

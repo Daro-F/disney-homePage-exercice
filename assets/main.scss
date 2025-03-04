@@ -1,0 +1,182 @@
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/functions" as *;
+@use "abstracts/colors" as *;
+@use "abstracts/typography" as *;
+@use "base/reset" as *;
+@use "base/global" as *;
+@use "base/typographys" as *;
+
+// PAGES //
+@use "layout/header" as *;
+@use "layout/footer" as *;
+
+// BUTON //
+@use "components/buttons/primary" as *;
+@use "components/buttons/secondary" as *;
+
+// CARDS //
+@use "../assets/components/cards/product-card" as *;
+
+// LAYOUT //
+@use "layout/grid" as *;
+
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+  
+body {
+    background-color: $background-dark;
+    color: $text-light;
+}
+  
+.banner {
+    position: relative;
+    height: 80vh;
+    background: url('/assets/images/Background.png') center/cover no-repeat;
+    @include flex-center(column, center, center, 0);
+
+    .hero {
+        border-radius: $border-radius;
+        text-align: center;
+        max-width: 700px;
+    }
+
+    .content {
+
+        .cta {
+            @include flex-center(row, center, center, 0);
+
+            .encart {
+                @include flex-center(row, center, center, 0);
+                text-align: center;
+
+                .image {
+                    img {
+                        margin-bottom: $margin-b;
+                    }
+                }
+
+                .primary-button {
+                    @include button-style($primary-color, $primary-color);
+                }
+            }
+
+        }
+
+        @media (max-width: 767px) {
+            display: none;
+        }
+    }
+}
+
+.banner-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .banner-mobile {
+        position: relative;
+        height: 60vh;
+        @include flex-center(column, center, center, 0);
+
+            .hero {
+                text-align: center;
+                @include flex-center (column, center, center, $spacing);
+
+                    button {
+                        @include button-style($primary-color, $primary-color);
+                }
+            }
+        }
+    }
+  
+.description {
+    @include flex-column(column, center, center, $spacing);
+    margin-top: $spacing;
+
+    .description-text {
+        @include flex-column(column, center, center, $spacing);
+        opacity: 0.8;
+        color: $descpription-color;
+    }
+}
+  
+.more {
+    margin-top: $spacing;
+
+    a {
+        @include link-style($text-light);
+        text-transform: inherit;
+        font-size: 20px;
+        &:hover {
+            text-decoration: underline
+        }
+    }
+}
+
+nav {
+    @include flex-center(row, center, center, 0);
+    margin-bottom: 3rem;
+
+    ul {
+        @include flex-center(row, center, center, 3rem);
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        white-space: nowrap;
+
+        li {
+            @include list-style(row, 0);
+
+            .list {
+                @include button-home(center, center);
+                @include link-style($text-light);
+                position: relative;
+
+                &::after {
+                    content: "";
+                    display: block;
+                    height: 4px;
+                    background-color: $text-light;
+                    position: absolute;
+                    bottom: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            &:first-child .list::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+    }
+}
+
+.pricing-title{
+    margin-top: $margin-section;
+    @include flex-center (row, center, center, 0);
+    @include flex-column( column, center, center, 0);
+    gap: $spacing;
+
+    h2 {
+        font-size: $title-size;
+    }
+
+    p {
+        color: $descpription-color;
+    }
+    
+}
+    
+.toggle-container {
+    @include toggle-btn-back (0.5rem, 0)
+}

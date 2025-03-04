@@ -1,0 +1,140 @@
+@use "../../abstracts/variables" as *;
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as *;
+@use "../../base/reset" as *;
+@use "../../base/typographys" as *;
+
+.pricing-content {
+    @include flex-column (column, center, center, 2rem);
+
+    .cards {
+
+        .cards-item {
+            display: flex;
+            align-items: stretch;
+            gap: 2rem;
+            
+            .content {
+                @include flex-column (column, space-between, flex-start, 5rem);
+                padding: 2rem;
+                border: solid 1px white;
+                
+                .cards-text {
+                    @include flex-column (column, flex-start, flex-start, 3rem);
+
+                    ul {
+                        @include list-style (column, 3rem);
+                        li {
+                            @include list-style (row, 0);
+                            color: #C0C0C0;
+                            &::before {
+                                content: "\f00c";
+                                font-family: "Font Awesome 5 Free";
+                                font-weight: 900;
+                                color: white;
+                                font-size: 1rem;
+                                margin-right: 0.8rem
+                            } 
+                        }
+                    }
+                }
+                
+                .cards-button {
+                    @include flex-column (column, center, flex-start, 1rem);
+                
+                    p {
+                        @include price-style ($text-light, 2rem);
+
+                        span {
+                            @include price-style ($descpription-color, 1rem);
+                        }
+                    }
+
+                    button {
+                        @include button-style($primary-color, $primary-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .more {
+        @include flex-center (column, center, center, 0.5rem);
+        color: $descpription-color;
+        margin-bottom: 6rem;
+    }
+}
+
+@media (max-width :768px) {
+    .cards {
+        display: none;
+    }
+}
+
+.cards-mobile {
+    @include flex-center(column,center,center,$spacing);
+    .cards-wrapper-mobile {
+        @include flex-center(row, space-around,center,3rem);
+        margin-top: $spacing;
+
+        .slider-left {
+            all: unset;
+        }
+
+        .cards-item-mobile {
+            @include flex-center(row, space-between, center,0);
+            background-color: $button-back-color;
+            padding: $spacing;
+
+            .item-text {
+                @include flex-column (column, flex-start, flex-start, 3rem);
+                width: 60%;
+
+                ul {
+                    @include list-style (column, 3rem);
+                    li {
+                        @include list-style (row, 0);
+                        color: #C0C0C0;
+                        &::before {
+                            content: "\f00c";
+                            font-family: "Font Awesome 5 Free";
+                            font-weight: 900;
+                            color: white;
+                            font-size: 1rem;
+                            margin-right: 0.8rem
+                        } 
+                    }
+                }
+            }
+
+            .cards-price {
+                @include flex-column (column, center, flex-start, 1rem);
+            
+                p {
+                    @include price-style ($text-light, 2rem);
+
+                    span {
+                        @include price-style ($descpription-color, 1rem);
+                        color: #C0C0C0;
+                    }
+                }
+            }
+        }
+
+        .slider-right {
+            all: unset;
+        }
+    }
+
+    .primary-button {
+        @include button-style($primary-color, $primary-color);
+        font-size: 1rem;
+        margin-bottom: $margin-section;
+    }
+}
+
+@media (min-width :768px) {
+    .cards-mobile {
+        display: none;
+    }
+}
